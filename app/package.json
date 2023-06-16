@@ -4,7 +4,7 @@
   "description": "tugas akhir productzilla",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon -L server.js",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
