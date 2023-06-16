@@ -1,0 +1,29 @@
+# Direktori node_modules di dalam direktori app
+app/node_modules/
+
+# Berkas environment
+app/.env
+
+# Berkas log
+# app/logs/
+
+# Direktori build dan distribusi
+# app/dist/
+# app/build/
+
+# Berkas konfigurasi yang berisi informasi sensitif
+app/config/config.js
+
+# Berkas sementara
+app/*.tmp
+
+# Berkas debug
+app/*.log
+app/debug.log
+
+# Berkas yang dihasilkan oleh alat pengembangan
+app/.DS_Store
+app/.vscode/
+app/npm-debug.log*
+app/yarn-debug.log*
+app/yarn-error.log*

@@ -1,0 +1,29 @@
+version: "3"
+services:
+  app:
+    container_name: zilla-final-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3301:3000
+    depends_on:
+      - db
+    volumes:
+      - ./app:/app
+    networks:
+      - pzfinal
+  db:
+    container_name: zilla-final-db
+    image: mongo:latest
+    ports:
+      - 27019:27017
+    volumes:
+      - ./docker/db:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+    networks:
+      - pzfinal
+networks:
+  pzfinal:
