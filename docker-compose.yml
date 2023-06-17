@@ -22,6 +22,7 @@ services:
     ports:
       - 27019:27017
     restart: unless-stopped
+
     volumes:
       - ./docker/db:/data/db
     environment:
