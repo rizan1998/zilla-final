@@ -21,7 +21,7 @@ services:
     image: mongo:latest
     ports:
       - 27019:27017
-    # restart: unless-stopped
+    restart: unless-stopped
     volumes:
       - ./docker/db:/data/db
     environment:
