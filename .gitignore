@@ -1,6 +1,8 @@
 # Direktori node_modules di dalam direktori app
 app/node_modules/
 
+docker
+
 # Berkas environment
 # app/.env
 
