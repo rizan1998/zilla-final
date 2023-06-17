@@ -1,5 +1,5 @@
 # Menggunakan node versi terbaru sebagai base image
-FROM node:19.9.0-bullseye
+FROM node:latest
 
 # Menentukan direktori kerja dalam container
 WORKDIR /app
@@ -14,10 +14,11 @@ RUN apt-get update && apt-get install -y \
 
 # Menjalankan perintah yarn install untuk menginstal dependensi aplikasi
 RUN yarn global add nodemon
-RUN yarn install
 
 # Menyalin seluruh sumber kode aplikasi ke dalam container
 COPY ./app/. /app/
+
+RUN yarn install
 
 # Menentukan port yang akan digunakan oleh aplikasi
 # EXPOSE 3300

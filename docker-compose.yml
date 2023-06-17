@@ -12,6 +12,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./app:/app
+      - /app/node_modules
     environment:
       - mongoUrl=mongodb://admin:secret@zilla-final-db:27017/pzfinal
     networks:
