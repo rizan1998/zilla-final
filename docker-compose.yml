@@ -9,8 +9,11 @@ services:
       - 3301:3000
     depends_on:
       - db
+    restart: unless-stopped
     volumes:
       - ./app:/app
+    environment:
+      - mongoUrl=mongodb://admin:secret@zilla-final-db:27017/pzfinal
     networks:
       - pzfinal
   db:
@@ -18,6 +21,7 @@ services:
     image: mongo:latest
     ports:
       - 27019:27017
+    restart: unless-stopped
     volumes:
       - ./docker/db:/data/db
     environment:

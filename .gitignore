@@ -2,7 +2,7 @@
 app/node_modules/
 
 # Berkas environment
-app/.env
+# app/.env
 
 # Berkas log
 # app/logs/
@@ -12,18 +12,18 @@ app/.env
 # app/build/
 
 # Berkas konfigurasi yang berisi informasi sensitif
-app/config/config.js
+# app/config/config.js
 
 # Berkas sementara
-app/*.tmp
+# app/*.tmp
 
 # Berkas debug
-app/*.log
-app/debug.log
+# app/*.log
+# app/debug.log
 
 # Berkas yang dihasilkan oleh alat pengembangan
-app/.DS_Store
-app/.vscode/
-app/npm-debug.log*
-app/yarn-debug.log*
-app/yarn-error.log*
+# app/.DS_Store
+# app/.vscode/
+# app/npm-debug.log*
+# app/yarn-debug.log*
+# app/yarn-error.log*

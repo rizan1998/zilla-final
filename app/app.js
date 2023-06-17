@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const connectDB = require("./src/database");
 const errorHandling = require("./src/middleware/errorHandling");
+const dateFormat = require("./src/middleware/formatDate");
 
 const app = express();
 
@@ -29,9 +30,10 @@ app
   .delete((req, res) => {
     res.send("you're inside fallback route");
   });
+
 /**
  * error handling
  */
-// app.use(errorHandling);
+app.use(errorHandling);
 
 module.exports = app;
