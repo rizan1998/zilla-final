@@ -3,6 +3,13 @@ const router = express.Router();
 const productCtrl = require("../controller/product");
 const roomCtrl = require("../controller/room");
 const reservationCtrl = require("../controller/reservation");
+const hotelCtrl = require("../controller/hotel");
+
+router.get("/hotels", hotelCtrl.fetch);
+router.post("/hotels", hotelCtrl.create);
+router.get("/hotels/:id", hotelCtrl.getOne);
+router.put("/hotels/:id", hotelCtrl.update);
+router.delete("/hotels/:id", hotelCtrl.destroy);
 
 router.get("/products", productCtrl.fetch);
 router.post("/products", productCtrl.create);
