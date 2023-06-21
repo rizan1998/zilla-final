@@ -4,6 +4,9 @@ const productCtrl = require("../controller/product");
 const roomCtrl = require("../controller/room");
 const reservationCtrl = require("../controller/reservation");
 const hotelCtrl = require("../controller/hotel");
+const userCtrl = require("../controller/user");
+
+router.post("/users", userCtrl.create);
 
 router.get("/hotels", hotelCtrl.fetch);
 router.post("/hotels", hotelCtrl.create);
