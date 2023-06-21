@@ -23,7 +23,7 @@ router.get("/rooms/:id", roomCtrl.getOne);
 router.put("/rooms/:id", roomCtrl.update);
 router.delete("/rooms/:id", roomCtrl.destroy);
 
-router.get("/reservations", reservationCtrl.fetch);
+router.get("/reservations/", reservationCtrl.fetch);
 router.post("/reservations", reservationCtrl.create);
 router.get("/reservations/:id", reservationCtrl.getOne);
 router.put("/reservations/:id", reservationCtrl.update);
