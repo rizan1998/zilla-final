@@ -1,0 +1,6 @@
+{
+  "watch": ["*.js", "swaggerv1.yml"],
+  "ignore": ["*.test.js", "node_modules"],
+  "ext": "js,yml",
+  "exec": "node server.js"
+}
