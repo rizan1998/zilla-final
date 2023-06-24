@@ -58,6 +58,7 @@ async function update(req, res) {
 }
 
 async function pay(req, res) {
+  req.body.pay = true;
   const data = await reservationSvc.update(req.body, req.params.id);
   res.send(data);
 }
@@ -72,5 +73,6 @@ module.exports = {
   getOne,
   create,
   update,
+  pay,
   destroy,
 };

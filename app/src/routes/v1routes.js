@@ -27,6 +27,7 @@ router.get("/reservations/", reservationCtrl.fetch);
 router.post("/reservations", reservationCtrl.create);
 router.get("/reservations/:id", reservationCtrl.getOne);
 router.put("/reservations/:id", reservationCtrl.update);
+router.put("reservations/:id/pay", reservationCtrl.pay);
 router.delete("/reservations/:id", reservationCtrl.destroy);
 
 module.exports = router;

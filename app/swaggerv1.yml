@@ -5,9 +5,12 @@ info:
   version: 1.0.0
 servers:
   - url: http://localhost:3301/api/v1
+
 tags:
   - name: Hotels
     description: Hotels CRUD route
+  - name: Reservations
+    description: Hotel reservations proses
 paths:
   /hotels:
     get:
@@ -22,11 +25,29 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Hotel"
+                  $ref: "#components/schemas/Hotel"
         "404":
           description: Hotels not found.
         "500":
           description: Internal server error.
+
+  /reservations:
+    post:
+      summary: Get list of hotels
+      description: Retrieve a list of hotels from the database.
+      tags: [Reservations]
+      responses:
+        "200":
+          description: Successfully retrieved the list of hotels.
+          content:
+            application/json:
+              schema:
+                type: array
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
+
 components:
   schemas:
     Hotel:
@@ -50,7 +71,25 @@ components:
         rating:
           type: number
           description: Rating of the hotel
-        rooms:
-          type: array
-          items:
-            $ref: "#/components/schemas/Room"
+  schemas:
+    Reservation:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the hotel
+        name:
+          type: string
+          description: Name of the hotel
+        address:
+          type: string
+          description: Address of the hotel
+        city:
+          type: string
+          description: City where the hotel is locate
+        country:
+          type: string
+          description: Country where the hotel is located
+        rating:
+          type: number
+          description: Rating of the hotel

@@ -14,11 +14,13 @@ async function getOne(id) {
   const data = await Reservation.findOne({ _id: id });
   return data;
 }
+
 async function create(body) {
   let reservation = new Reservation({ ...body });
   reservation = await reservation.save();
   return reservation;
 }
+
 async function update(body, id) {
   const data = await Reservation.findOneAndUpdate(
     { _id: id },
@@ -29,6 +31,18 @@ async function update(body, id) {
   );
   return data;
 }
+
+async function pay(id) {
+  const data = await Reservation.findOneAndUpdate(
+    { _id: id },
+    { ...body },
+    {
+      replace: true,
+    }
+  );
+  return data;
+}
+
 async function destroy(id) {
   const data = await Reservation.findOneAndDelete({ _id: id });
   return data;
@@ -39,5 +53,6 @@ module.exports = {
   getOne,
   create,
   update,
+  pay,
   destroy,
 };
