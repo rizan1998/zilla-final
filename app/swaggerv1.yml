@@ -31,23 +31,31 @@ paths:
         "500":
           description: Internal server error.
 
-  /reservations:
-    post:
-      summary: Get list of hotels
-      description: Retrieve a list of hotels from the database.
+  /reservations/user/{user_id}:
+    get:
+      summary: user reservations list
+      description: Retrieve a list of reservations from the database.
       tags: [Reservations]
+      parameters:
+        - in: path
+          name: user_id
+          schema:
+            type: string
+          description: ID for user reservation
+          required: true
       responses:
         "200":
-          description: Successfully retrieved the list of hotels.
+          description: return list data reservation.
           content:
             application/json:
               schema:
                 type: array
+                items:
+                  $ref: "#components/schemas/Reservation"
         "404":
           description: Hotels not found.
         "500":
           description: Internal server error.
-
 components:
   schemas:
     Hotel:
@@ -71,25 +79,32 @@ components:
         rating:
           type: number
           description: Rating of the hotel
-  schemas:
     Reservation:
       type: object
       properties:
-        id:
+        _id:
+          type: string
+          description: id reservation
+        reservation_code:
+          type: string
+          description: code reservation
+        total_price:
           type: integer
-          description: Unique identifier for the hotel
-        name:
+          description: total reservation price
+        date_checkin:
           type: string
-          description: Name of the hotel
-        address:
+          format: date
+          description: date checkin reservation (format= yyyy-MM-dd)
+        date_checkout:
           type: string
-          description: Address of the hotel
-        city:
+          format: date
+          description: date checkout reservation (format= yyyy-MM-dd)
+        room_id:
           type: string
-          description: City where the hotel is locate
-        country:
+          description: room_id for conected the room reservation
+        pay:
+          type: boolean
+          description: status pay true or false
+        user_id:
           type: string
-          description: Country where the hotel is located
-        rating:
-          type: number
-          description: Rating of the hotel
+          description: user reservation

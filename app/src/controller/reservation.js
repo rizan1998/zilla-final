@@ -7,8 +7,8 @@ const getDayTotal = require("../middleware/getDayTotal");
 const formatDate = require("../middleware/formatDate");
 
 async function fetch(req, res) {
-  const userId = req.body.userId;
-  const data = await reservationSvc.fetch(userId);
+  const user_id = req.params.user_id;
+  const data = await reservationSvc.fetch(user_id);
   res.send(data);
 }
 
