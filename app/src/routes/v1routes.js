@@ -5,6 +5,9 @@ const roomCtrl = require("../controller/room");
 const reservationCtrl = require("../controller/reservation");
 const hotelCtrl = require("../controller/hotel");
 const userCtrl = require("../controller/user");
+const authCtrl = require("../controller/auth");
+
+router.post("/login", authCtrl.login);
 
 router.post("/users", userCtrl.create);
 

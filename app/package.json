@@ -11,6 +11,7 @@
   "author": "rizan and faris",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "dayjs": "^1.11.8",
     "dotenv": "^16.3.0",
