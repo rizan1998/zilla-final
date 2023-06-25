@@ -9,7 +9,6 @@ async function create(body) {
 }
 
 async function findUserBy(field, userIdentityValue) {
-  console.log({[field]: userIdentityValue});
   const user = await User.findOne({[field]: userIdentityValue});
   return user;
 }
