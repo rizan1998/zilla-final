@@ -4,6 +4,14 @@ const productCtrl = require("../controller/product");
 const roomCtrl = require("../controller/room");
 const reservationCtrl = require("../controller/reservation");
 const hotelCtrl = require("../controller/hotel");
+const userCtrl = require("../controller/user");
+const authCtrl = require("../controller/auth");
+const verifyJWT = require("../middleware/verifyJWT");
+
+router.post("/login", authCtrl.login);
+router.use(verifyJWT);
+
+router.post("/users", userCtrl.create);
 
 router.get("/hotels", hotelCtrl.fetch);
 router.post("/hotels", hotelCtrl.create);
