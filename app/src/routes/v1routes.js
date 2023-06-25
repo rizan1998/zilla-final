@@ -17,8 +17,8 @@ router.get("/products/:id", productCtrl.getOne);
 router.put("/products/:id", productCtrl.update);
 router.delete("/products/:id", productCtrl.destroy);
 
-router.get("/rooms", roomCtrl.fetch);
-router.post("/rooms", roomCtrl.create);
+router.get("/rooms/fetch", roomCtrl.fetch);
+router.post("/rooms/create", roomCtrl.create);
 router.get("/rooms/:id/detail", roomCtrl.getOne);
 router.put("/rooms/:id/update", roomCtrl.update);
 router.delete("/rooms/:id/delete", roomCtrl.destroy);
