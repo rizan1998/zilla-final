@@ -16,7 +16,7 @@ async function getOne(req, res) {
 }
 
 async function update(req, res) {
-  const data = await hotelSvc.update(req.body, req.params.id);
+  const data = await hotelSvc.update(req.params.id, req.body);
   res.send(data);
 }
 

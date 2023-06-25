@@ -11,8 +11,13 @@ tags:
     description: Hotels CRUD route
   - name: Reservations
     description: Hotel reservations proses
+  - name: Rooms
+    description: Hotel rooms CRUD
+
+
+# ================ HOTEL =================
 paths:
-  /hotels:
+  /hotels/fetch:
     get:
       summary: Get list of hotels
       description: Retrieve a list of hotels from the database.
@@ -30,7 +35,306 @@ paths:
           description: Hotels not found.
         "500":
           description: Internal server error.
+  /hotels/create:
+    post:
+      summary: add hotel reservation
+      description: add the hotel to database.
+      tags: [Hotels]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: hotel name
+                address:
+                  type: string
+                  description: hotel address
+      responses:
+        "200":
+          description: Successfully retrieved the list of hotels.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Hotel"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
+  /hotels/{hotel_id}/detail:
+    get:
+      summary: Get detail hotel
+      description: get detail hotel
+      tags: [Hotels]
+      parameters:
+        - in: path
+          name: hotel_id
+          schema:
+            type: string
+          description: ID for hotel_id
+          required: true
+      responses:
+        "200":
+          description: Successfully retrieved the list of hotels.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Hotel"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
+  /hotels/{hotel_id}/update:
+    put:
+      summary: update hotel by id
+      description: update hotel by id
+      tags: [Hotels]
+      parameters:
+        - in: path
+          name: hotel_id
+          schema:
+            type: string
+          description: ID for hotel_id
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: hotel name
+                address:
+                  type: string
+                  description: hotel address
+      responses:
+        "200":
+          description: Successfully retrieved the list of hotels.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Hotel"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
+  /hotels/{hotel_id}/delete:
+    delete:
+      summary: delete hotel by id
+      description: update hotel by id
+      tags: [Hotels]
+      parameters:
+        - in: path
+          name: hotel_id
+          schema:
+            type: string
+          description: ID for hotel_id
+          required: true
+      responses:
+        "200":
+          description: Successfully retrieved the list of hotels.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Hotel"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
 
+# ================ ROOM =================
+
+  /rooms/fetch:
+    get:
+      summary: Get list of hotels
+      description: Retrieve a list of hotels from the database.
+      tags: [Rooms]
+      responses:
+        "200":
+          description: Successfully retrieved the list of hotels.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Room"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
+  /rooms/create:
+    post:
+      summary: add hotel reservation
+      description: add the hotel to database.
+      tags: [Rooms]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: hotel name
+                address:
+                  type: string
+                  description: hotel address
+      responses:
+        "200":
+          description: Successfully retrieved the list of hotels.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Room"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
+  /rooms/{hotel_id}/detail:
+    get:
+      summary: Get detail hotel
+      description: get detail hotel
+      tags: [Rooms]
+      parameters:
+        - in: path
+          name: hotel_id
+          schema:
+            type: string
+          description: ID for hotel_id
+          required: true
+      responses:
+        "200":
+          description: Successfully retrieved the list of hotels.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Room"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
+  /rooms/{hotel_id}/update:
+    put:
+      summary: update hotel by id
+      description: update hotel by id
+      tags: [Rooms]
+      parameters:
+        - in: path
+          name: hotel_id
+          schema:
+            type: string
+          description: ID for hotel_id
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: hotel name
+                address:
+                  type: string
+                  description: hotel address
+      responses:
+        "200":
+          description: Successfully retrieved the list of hotels.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Room"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
+  /rooms/{hotel_id}/delete:
+    delete:
+      summary: delete hotel by id
+      description: update hotel by id
+      tags: [Rooms]
+      parameters:
+        - in: path
+          name: hotel_id
+          schema:
+            type: string
+          description: ID for hotel_id
+          required: true
+      responses:
+        "200":
+          description: Successfully retrieved the list of hotels.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Room"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
+
+# ================ RESERVATION ==================
+  /reservations:
+    post:
+      summary: add new reservation
+      description: create new reservation.
+      tags: [Reservations]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date_checkin:
+                  format: date-time
+                  pattern: "^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$"
+                  example: "2023-06-01 13:00:00"
+                date_checkout:
+                  format: date-time
+                  pattern: "^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$"
+                  example: "2023-06-01 13:00:00"
+                room_id:
+                  type: string
+                  description: refrensi room reservation
+                user_id:
+                  type: string
+                  description: user_id reservation
+      responses:
+        "200":
+          description: return list data reservation.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Reservation"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
   /reservations/user/{user_id}:
     get:
       summary: user reservations list
@@ -39,6 +343,124 @@ paths:
       parameters:
         - in: path
           name: user_id
+          schema:
+            type: string
+          description: ID for user reservation
+          required: true
+      responses:
+        "200":
+          description: return list data reservation.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Reservation"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
+  /reservations/{reservation_id}/detail:
+    get:
+      summary: detail reservation package
+      description: Retrieve the detail reservations from the database.
+      tags: [Reservations]
+      parameters:
+        - in: path
+          name: reservation_id
+          schema:
+            type: string
+          description: ID for user reservation
+          required: true
+      responses:
+        "200":
+          description: return list data reservation.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Reservation"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
+  /reservations/{reservation_id}/update:
+    put:
+      summary: update reservation package
+      description: update reservation has been created to database.
+      tags: [Reservations]
+      parameters:
+        - in: path
+          name: reservation_id
+          schema:
+            type: string
+          description: ID for user reservation
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date_checkin:
+                  format: date-time
+                  pattern: "^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$"
+                  example: "2023-06-01 13:00:00"
+                date_checkout:
+                  format: date-time
+                  pattern: "^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$"
+                  example: "2023-06-01 13:00:00"
+                room_id:
+                  type: string
+                  description: refrensi room reservation
+      responses:
+        "200":
+          description: return list data reservation.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Reservation"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
+  /reservations/{reservation_id}/pay:
+    put:
+      summary: route for pay reservation
+      description: update pay colom in reservation database.
+      tags: [Reservations]
+      parameters:
+        - in: path
+          name: reservation_id
+          schema:
+            type: string
+          description: ID for user reservation
+          required: true
+      responses:
+        "200":
+          description: return list data reservation.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Reservation"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
+  /reservations/{reservation_id}/delete:
+    delete:
+      summary: cancel or delete reservation
+      description: delete reservation from database.
+      tags: [Reservations]
+      parameters:
+        - in: path
+          name: reservation_id
           schema:
             type: string
           description: ID for user reservation
@@ -70,15 +492,17 @@ components:
         address:
           type: string
           description: Address of the hotel
-        city:
+    Room:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the hotel
+        name:
           type: string
-          description: City where the hotel is locate
-        country:
+          description: Name of the hotel
+        address:
           type: string
-          description: Country where the hotel is located
-        rating:
-          type: number
-          description: Rating of the hotel
     Reservation:
       type: object
       properties:

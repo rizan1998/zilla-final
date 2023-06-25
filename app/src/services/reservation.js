@@ -22,24 +22,26 @@ async function create(body) {
 }
 
 async function update(body, id) {
-  const data = await Reservation.findOneAndUpdate(
+  await Reservation.findOneAndUpdate(
     { _id: id },
     { ...body },
     {
       replace: true,
     }
   );
+  const data = await Reservation.findOne({ _id: id });
   return data;
 }
 
 async function pay(id) {
-  const data = await Reservation.findOneAndUpdate(
+  await Reservation.findOneAndUpdate(
     { _id: id },
     { ...body },
     {
       replace: true,
     }
   );
+  const data = await Reservation.findOne({ _id: id });
   return data;
 }
 
