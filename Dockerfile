@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
 
 # Menjalankan perintah yarn install untuk menginstal dependensi aplikasi
 RUN yarn global add nodemon
-RUN yarn global add node-pre-gyp
+# RUN yarn global add node-pre-gyp
 RUN yarn install --frozen-lockfile
 
 
