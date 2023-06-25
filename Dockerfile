@@ -12,13 +12,14 @@ COPY ./app/yarn.lock /app/
 # Update paket dan instal dependensi sistem
 RUN apt-get update && apt-get install -y \
     # list paket yang ingin diinstal di sini=
-    python \
-    build-essential \
+    # python \
+    # build-essential \
     && rm -rf /var/lib/apt/lists/*
     
 
 # Menjalankan perintah yarn install untuk menginstal dependensi aplikasi
 RUN yarn global add nodemon
+RUN yarn global add node-pre-gyp
 RUN yarn install --frozen-lockfile
 
 
