@@ -62,12 +62,31 @@ paths:
           description: Internal server error.
 # ================ USERS =================
   /users:
-    get:
+    post:
       summary: Get list of hotels
       description: Retrieve a list of hotels from the database.
       security:
         - BearerAuth: []
       tags: [Users]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: name user
+                username: 
+                  type: string
+                  description: username user
+                password:
+                  type: string
+                  description: password user
+                role_id: 
+                  type: number
+                  description: rolde_id user
       responses:
         "200":
           description: Successfully retrieved the list of hotels.
@@ -76,7 +95,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#components/schemas/Hotel"
+                  $ref: "#components/schemas/User"
         "404":
           description: Hotels not found.
         "500":
@@ -635,3 +654,21 @@ components:
         user_id:
           type: string
           description: user reservation
+    User:
+      type: object 
+      properties:
+        _id:
+          type: string
+          description: id user
+        name:
+          type: string
+          description: name user
+        username:
+          type: string
+          description: username user
+        password:
+          type: string
+          description: password user
+        role_id:
+          type: number
+          description: user role_id 
