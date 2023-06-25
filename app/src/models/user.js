@@ -23,7 +23,7 @@ const userSchema = new Schema(
       default: 2,
     },
   },
-  {collection: "users"}
+  { collection: "users" }
 );
 
 const User = mongoose.model("User", userSchema);

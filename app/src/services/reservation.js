@@ -33,7 +33,7 @@ async function update(body, id) {
   return data;
 }
 
-async function pay(id) {
+async function pay(body, id) {
   await Reservation.findOneAndUpdate(
     { _id: id },
     { ...body },

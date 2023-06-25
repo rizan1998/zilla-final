@@ -1,7 +1,6 @@
 // test
 const express = require("express");
 const router = express.Router();
-const productCtrl = require("../controller/product");
 const roomCtrl = require("../controller/room");
 const reservationCtrl = require("../controller/reservation");
 const hotelCtrl = require("../controller/hotel");
@@ -19,12 +18,6 @@ router.post("/hotels/create", hotelCtrl.create);
 router.get("/hotels/:id/detail", hotelCtrl.getOne);
 router.put("/hotels/:id/update", hotelCtrl.update);
 router.delete("/hotels/:id/delete", hotelCtrl.destroy);
-
-router.get("/products", productCtrl.fetch);
-router.post("/products", productCtrl.create);
-router.get("/products/:id", productCtrl.getOne);
-router.put("/products/:id", productCtrl.update);
-router.delete("/products/:id", productCtrl.destroy);
 
 router.get("/rooms/fetch", roomCtrl.fetch);
 router.post("/rooms/create", roomCtrl.create);

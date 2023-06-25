@@ -5,8 +5,20 @@ info:
   version: 1.0.0
 servers:
   - url: http://localhost:3301/api/v1
+securityDefinitions:
+  JWTAuth:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: JSON Web Token (JWT) Authentication
+security:
+  - JWTAuth: []
 
 tags:
+  - name: Auth
+    description: Auth process
+  - name: Users
+    description: add users
   - name: Hotels
     description: Hotels CRUD route
   - name: Reservations
@@ -14,13 +26,69 @@ tags:
   - name: Rooms
     description: Hotel rooms CRUD
 
+paths:
+
+# ================ AUTH =================
+  /login:
+    post:
+      summary: Get list of hotels
+      description: Retrieve a list of hotels from the database.
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: username
+                password:
+                  type: string
+                  description: password
+      responses:
+        "200":
+          description: Successfully retrieved the list of hotels.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Hotel"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
+# ================ USERS =================
+  /users:
+    get:
+      summary: Get list of hotels
+      description: Retrieve a list of hotels from the database.
+      security:
+        - BearerAuth: []
+      tags: [Users]
+      responses:
+        "200":
+          description: Successfully retrieved the list of hotels.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Hotel"
+        "404":
+          description: Hotels not found.
+        "500":
+          description: Internal server error.
 
 # ================ HOTEL =================
-paths:
   /hotels/fetch:
     get:
       summary: Get list of hotels
       description: Retrieve a list of hotels from the database.
+      security:
+        - BearerAuth: []
       tags: [Hotels]
       responses:
         "200":
@@ -39,6 +107,8 @@ paths:
     post:
       summary: add hotel reservation
       description: add the hotel to database.
+      security:
+        - BearerAuth: []
       tags: [Hotels]
       requestBody:
         required: true
@@ -70,6 +140,8 @@ paths:
     get:
       summary: Get detail hotel
       description: get detail hotel
+      security:
+        - BearerAuth: []
       tags: [Hotels]
       parameters:
         - in: path
@@ -95,6 +167,8 @@ paths:
     put:
       summary: update hotel by id
       description: update hotel by id
+      security:
+        - BearerAuth: []
       tags: [Hotels]
       parameters:
         - in: path
@@ -133,6 +207,8 @@ paths:
     delete:
       summary: delete hotel by id
       description: update hotel by id
+      security:
+        - BearerAuth: []
       tags: [Hotels]
       parameters:
         - in: path
@@ -161,6 +237,8 @@ paths:
     get:
       summary: Get list of hotels
       description: Retrieve a list of hotels from the database.
+      security:
+        - BearerAuth: []
       tags: [Rooms]
       responses:
         "200":
@@ -179,6 +257,8 @@ paths:
     post:
       summary: add hotel reservation
       description: add the hotel to database.
+      security:
+        - BearerAuth: []
       tags: [Rooms]
       requestBody:
         required: true
@@ -210,6 +290,8 @@ paths:
     get:
       summary: Get detail hotel
       description: get detail hotel
+      security:
+        - BearerAuth: []
       tags: [Rooms]
       parameters:
         - in: path
@@ -235,6 +317,8 @@ paths:
     put:
       summary: update hotel by id
       description: update hotel by id
+      security:
+        - BearerAuth: []
       tags: [Rooms]
       parameters:
         - in: path
@@ -273,6 +357,8 @@ paths:
     delete:
       summary: delete hotel by id
       description: update hotel by id
+      security:
+        - BearerAuth: []
       tags: [Rooms]
       parameters:
         - in: path
@@ -300,6 +386,8 @@ paths:
     post:
       summary: add new reservation
       description: create new reservation.
+      security:
+        - BearerAuth: []
       tags: [Reservations]
       requestBody:
         required: true
@@ -339,6 +427,8 @@ paths:
     get:
       summary: user reservations list
       description: Retrieve a list of reservations from the database.
+      security:
+        - BearerAuth: []
       tags: [Reservations]
       parameters:
         - in: path
@@ -364,6 +454,8 @@ paths:
     get:
       summary: detail reservation package
       description: Retrieve the detail reservations from the database.
+      security:
+        - BearerAuth: []
       tags: [Reservations]
       parameters:
         - in: path
@@ -389,6 +481,8 @@ paths:
     put:
       summary: update reservation package
       description: update reservation has been created to database.
+      security:
+        - BearerAuth: []
       tags: [Reservations]
       parameters:
         - in: path
@@ -432,6 +526,8 @@ paths:
     put:
       summary: route for pay reservation
       description: update pay colom in reservation database.
+      security:
+        - BearerAuth: []
       tags: [Reservations]
       parameters:
         - in: path
@@ -457,6 +553,8 @@ paths:
     delete:
       summary: cancel or delete reservation
       description: delete reservation from database.
+      security:
+        - BearerAuth: []
       tags: [Reservations]
       parameters:
         - in: path
@@ -479,6 +577,11 @@ paths:
         "500":
           description: Internal server error.
 components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     Hotel:
       type: object
