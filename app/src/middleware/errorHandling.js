@@ -1,3 +1,4 @@
 module.exports = (err, req, res, next) => {
-  res.status(500).send({ message: "oops! something gone wrong" });
+  console.log(err);
+  res.status(500).send({message: "oops! something gone wrong"});
 };

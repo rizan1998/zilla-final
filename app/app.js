@@ -8,7 +8,7 @@ const errorHandling = require("./src/middleware/errorHandling");
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 connectDB();
 
 app.use(cors("*"));
@@ -17,7 +17,6 @@ app.use(cors("*"));
  * routing
  */
 const routesApiV1 = require("./src/routes/v1routes");
-
 swaggerConfig(app);
 
 app.use("/api/v1", routesApiV1);

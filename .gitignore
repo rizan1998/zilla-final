@@ -2,6 +2,7 @@
 app/node_modules/
 
 docker
+.env
 # Berkas environment
 # app/.env
 
