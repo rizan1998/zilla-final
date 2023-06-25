@@ -16,11 +16,19 @@ const reservationSchema = new Schema(
       type: Date,
       required: true,
     },
-    hotel_id: {
-      type: Number,
+    date_checkout: {
+      type: Date,
       required: true,
     },
     room_id: {
+      type: String,
+      required: true,
+    },
+    pay: {
+      type: Boolean,
+      default: false,
+    },
+    user_id: {
       type: String,
       required: true,
     },

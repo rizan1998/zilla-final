@@ -12,6 +12,10 @@ const roomSchema = new Schema(
       type: Number,
       required: true,
     },
+    hotel_id: {
+      type: String,
+      required: true,
+    },
     capacity: {
       type: Number,
       required: true,

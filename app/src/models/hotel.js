@@ -13,7 +13,7 @@ const hotelSchema = new Schema(
       required: true,
     },
   },
-  {collection: "hotels"}
+  { collection: "hotels" }
 );
 
 const Hotel = mongoose.model("Hotel", hotelSchema);

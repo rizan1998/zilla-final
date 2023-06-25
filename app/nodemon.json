@@ -1,0 +1,6 @@
+{
+  "watch": ["*.js", "*.yml", "*.md"],
+  "ignore": ["*.test.js", "node_modules"],
+  "ext": "js,yml,md",
+  "exec": "node server.js"
+}

@@ -20,5 +20,7 @@ RUN yarn install
 # Menyalin seluruh sumber kode aplikasi ke dalam container
 COPY ./app/. /app/
 
+# EXPOSE 8080
+EXPOSE 3301
 
 CMD ["yarn", "run", "dev"]
