@@ -12,8 +12,8 @@ COPY ./app/yarn.lock /app/
 # Update paket dan instal dependensi sistem
 RUN apt-get update && apt-get install -y \
     # list paket yang ingin diinstal di sini=
-    # python \
-    # build-essential \
+    apt-get install python3 \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
     
 
