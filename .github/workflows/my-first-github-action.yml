@@ -16,6 +16,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18.12.1'
+      - name: Check current directory
+        run: ls
       - name: Install dependencies
         run: yarn install
       - name: Run tests
