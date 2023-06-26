@@ -426,9 +426,6 @@ paths:
                 room_id:
                   type: string
                   description: refrensi room reservation
-                user_id:
-                  type: string
-                  description: user_id reservation
       responses:
         "200":
           description: return list data reservation.

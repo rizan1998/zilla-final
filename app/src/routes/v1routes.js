@@ -7,6 +7,7 @@ const hotelCtrl = require("../controller/hotel");
 const userCtrl = require("../controller/user");
 const authCtrl = require("../controller/auth");
 const verifyJWT = require("../middleware/verifyJWT");
+const { authenticateUser } = require("../middleware/authenticateUser");
 
 router.post("/login", authCtrl.login);
 router.use(verifyJWT);
@@ -26,7 +27,7 @@ router.put("/rooms/:id/update", roomCtrl.update);
 router.delete("/rooms/:id/delete", roomCtrl.destroy);
 
 router.get("/reservations/user/:user_id", reservationCtrl.fetch);
-router.post("/reservations", reservationCtrl.create);
+router.post("/reservations", authenticateUser, reservationCtrl.create);
 router.get("/reservations/:id/detail", reservationCtrl.getOne);
 router.put("/reservations/:id/update", reservationCtrl.update);
 router.put("/reservations/:id/pay", reservationCtrl.pay);

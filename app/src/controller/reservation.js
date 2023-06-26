@@ -32,6 +32,7 @@ async function create(req, res) {
     req.body.total_price = totalPrice;
     req.body.date_checkin = formatDate(date_checkin);
     req.body.date_checkout = formatDate(date_checkout);
+    req.body.user_id = req.userId;
     const reservation = await reservationSvc.create(req.body);
     res.send(reservation);
   }

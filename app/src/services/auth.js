@@ -11,11 +11,13 @@ async function handleLogin(payload) {
     // JWT authentication
     const accessToken = jwt.sign(
       {
+        userId: user._id,
         username: user.username,
       },
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "24h" }
     );
+    // console.log(user._id);
     return { accessToken };
   } else {
     return { message: "unauthorized" };

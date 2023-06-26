@@ -17,7 +17,7 @@ services:
       - ./app/app.js:/app/app.js
       - ./app/server.js:/app/server.js
       - ./app/swagger.js:/app/swagger.js
-      - ./app/swaggerv1.yml:/app/swaggerv1.js
+      - ./app/swaggerv1.yml:/app/swaggerv1.yml
     environment:
       - mongoUrl=mongodb://admin:secret@zilla-final-db:27017/pzfinal
     networks:
