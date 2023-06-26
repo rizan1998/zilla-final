@@ -11,7 +11,13 @@ services:
       - db
     restart: unless-stopped
     volumes:
-      - ./app:/app
+      - ./app/src:/app/src
+      - ./app/config:/app/config
+      - ./app/test:/app/test
+      - ./app/app.js:/app/app.js
+      - ./app/server.js:/app/server.js
+      - ./app/swagger.js:/app/swagger.js
+      - ./app/swaggerv1.yml:/app/swaggerv1.js
     environment:
       - mongoUrl=mongodb://admin:secret@zilla-final-db:27017/pzfinal
     networks:
