@@ -10,12 +10,12 @@ WORKDIR /app
 COPY ./app/package*.json ./
 # COPY ./app/yarn.lock ./
 
-# Update paket dan instal dependensi sistem
-RUN apt-get update && apt-get install -y \
-    # list paket yang ingin diinstal di sini=
-    build-essential \
-    python3 \
-    && rm -rf /var/lib/apt/lists/*
+# # Update paket dan instal dependensi sistem
+# RUN apt-get update && apt-get install -y \
+#     # list paket yang ingin diinstal di sini=
+#     build-essential \
+#     python3 \
+#     && rm -rf /var/lib/apt/lists/*
     
 RUN apk add python2 gcc
 
