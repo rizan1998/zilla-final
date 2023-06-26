@@ -2,7 +2,7 @@
 # FROM node:16-alpine3.18
 FROM node:latest
 # FROM node:20.3.1-bullseye
-RUN apt-get install python2 gcc
+RUN apt-get update && apt-get install python2 gcc
 
 RUN apt-get --no-cache ca-certificates
 # Menentukan direktori kerja dalam container
