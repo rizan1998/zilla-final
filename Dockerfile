@@ -1,7 +1,7 @@
 # Menggunakan node versi terbaru sebagai base image
 FROM node:latest
 # FROM node:20.3.1-bullseye
-
+RUN apk add python2 gcc
 # Menentukan direktori kerja dalam container
 WORKDIR /app
 
