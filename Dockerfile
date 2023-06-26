@@ -6,8 +6,8 @@ FROM node:latest
 WORKDIR /app
 
 # Menyalin package.json dan package-lock.json ke dalam container
-COPY ./app/package.json /app/
-COPY ./app/yarn.lock /app/
+COPY ./app/package*.json ./
+# COPY ./app/yarn.lock ./
 
 # Update paket dan instal dependensi sistem
 RUN apt-get update && apt-get install -y \
