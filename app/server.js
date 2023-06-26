@@ -3,9 +3,6 @@ const dayjs = require("dayjs");
 const runningOn = dayjs().format("YYYY-MM-DD HH:mm:ss");
 require("dotenv").config();
 
-app.listen(process.env.PORT, () => {
-  console.log(
-    "application listen on http://localhost:".process.env.PORT,
-    runningOn
-  );
+app.listen(3301, () => {
+  console.log("application listen on http://localhost:3301 ", runningOn);
 });
