@@ -4,7 +4,7 @@ FROM node:latest
 # FROM node:20.3.1-bullseye
 RUN apt-get update && apt-get install -y python3 gcc
 
-RUN apt-get --no-cache ca-certificates
+# RUN apt-get --no-cache ca-certificates
 # Menentukan direktori kerja dalam container
 WORKDIR /app
 
