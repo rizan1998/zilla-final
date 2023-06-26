@@ -1,5 +1,6 @@
 # Menggunakan node versi terbaru sebagai base image
-FROM node:latest
+FROM node:14.18-alpine
+# FROM node:latest
 # FROM node:20.3.1-bullseye
 
 # Menentukan direktori kerja dalam container
