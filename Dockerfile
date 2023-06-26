@@ -1,5 +1,5 @@
 # Menggunakan node versi terbaru sebagai base image
-FROM node:14.18-alpine
+FROM node:20-alpine3.17
 # FROM node:latest
 # FROM node:20.3.1-bullseye
 
