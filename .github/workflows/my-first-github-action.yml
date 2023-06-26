@@ -22,4 +22,7 @@ jobs:
       - name: Run tests
         working-directory: ./app
         run: yarn test
+      - name: Build App
+        working-directory: ./app
+        run: docker-compose build
       
