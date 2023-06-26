@@ -28,7 +28,7 @@ describe("Room Service", () => {
     const result = await roomSvc.fetch();
 
     expect(room.find).toHaveBeenCalledWith({});
-    expect(result).toEqual({ message: "data is empty" });
+    expect(result).toEqual({message: "data is empty"});
   });
 
   test("getOne should return a room by id", async () => {
@@ -37,12 +37,12 @@ describe("Room Service", () => {
 
     const result = await roomSvc.getOne(roomId);
 
-    expect(room.findOne).toHaveBeenCalledWith({ _id: roomId });
+    expect(room.findOne).toHaveBeenCalledWith({_id: roomId});
     expect(result).toEqual(roomMock);
   });
 
   test("create should create a new room", async () => {
-    const requestBody = { field1: "value1", field2: "value2" };
+    const requestBody = {field1: "value1", field2: "value2"};
 
     const saveMock = jest.fn().mockResolvedValue(roomMock);
     room.prototype.save = saveMock;
@@ -55,14 +55,18 @@ describe("Room Service", () => {
   });
 
   test("update should update a room by id", async () => {
-    const requestBody = { field1: "value1", field2: "value2" };
+    const requestBody = {field1: "value1", field2: "value2"};
 
     const findOneAndUpdateMock = jest.fn().mockResolvedValue(roomMock);
     room.findOneAndUpdate = findOneAndUpdateMock;
 
     const result = await roomSvc.update(requestBody, roomId);
 
-    expect(room.findOneAndUpdate).toHaveBeenCalledWith({ _id: roomId }, requestBody, { replace: true });
+    expect(room.findOneAndUpdate).toHaveBeenCalledWith(
+      {_id: roomId},
+      requestBody,
+      {replace: true}
+    );
     expect(result).toEqual(roomMock);
   });
 
@@ -72,7 +76,7 @@ describe("Room Service", () => {
 
     const result = await roomSvc.destroy(roomId);
 
-    expect(room.findOneAndDelete).toHaveBeenCalledWith({ _id: roomId });
+    expect(room.findOneAndDelete).toHaveBeenCalledWith({_id: roomId});
     expect(result).toEqual(roomMock);
   });
 });
