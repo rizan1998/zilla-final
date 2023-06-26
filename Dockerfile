@@ -1,9 +1,7 @@
 # Menggunakan node versi terbaru sebagai base image
 FROM node:latest
 # FROM node:20.3.1-bullseye
-RUN apk add python2 gcc
 
-RUN apk --no-cache add ca-certificates
 # Menentukan direktori kerja dalam container
 WORKDIR /app
 
@@ -18,6 +16,9 @@ RUN apt-get update && apt-get install -y \
     python3 \
     && rm -rf /var/lib/apt/lists/*
     
+RUN apk add python2 gcc
+
+RUN apk --no-cache add ca-certificates
 
 # Menjalankan perintah yarn install untuk menginstal dependensi aplikasi
 # RUN yarn global add node-pre-gyp
