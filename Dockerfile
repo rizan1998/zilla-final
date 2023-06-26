@@ -1,6 +1,6 @@
 # Menggunakan node versi terbaru sebagai base image
 # FROM node:16-alpine3.18
-FROM node:latest
+FROM node:16.20
 # FROM node:20.3.1-bullseye
 RUN apt-get update && apt-get install -y python3 gcc
 
