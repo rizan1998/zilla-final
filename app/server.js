@@ -1,6 +1,7 @@
 const app = require("./app");
 const dayjs = require("dayjs");
 const runningOn = dayjs().format("YYYY-MM-DD HH:mm:ss");
+require("dotenv").config();
 
 app.listen(process.env.PORT, () => {
   console.log(
