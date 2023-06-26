@@ -1,6 +1,9 @@
 name: Pre-Deploy
 
-on: ['push']
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   running-testing:
